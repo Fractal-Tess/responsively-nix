@@ -7,9 +7,12 @@
   };
 
   outputs = { self, nixpkgs, flake-utils }:
+    let
+      systems = flake-utils.lib.defaultSystems;
+    in
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = nixpkgs.legacyPackages.${system};
+        pkgs = import nixpkgs { inherit system; };
       in
       {
         packages.responsively = pkgs.appimageTools.wrapType2 {
@@ -34,7 +37,9 @@
           '';
         };
 
-        defaultPackage = self.packages.${system}.responsively;
+        overlay = final: prev: {
+          responsively = self.packages.${system}.responsively;
+        };
       }
     );
 }
