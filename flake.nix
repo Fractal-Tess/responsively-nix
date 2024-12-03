@@ -22,7 +22,11 @@
           };
 
           extraInstallPhase = ''
+            # Create application directories for .desktop file
             mkdir -p $out/share/applications
+            mkdir -p $out/share/icons/hicolor/scalable/apps
+
+            # Copy the desktop entry to the appropriate location
             cp ${pkgs.makeDesktopItem {
               name = "responsively";
               desktopName = "Responsively";
@@ -31,6 +35,19 @@
               icon = "responsively";
               categories = [ "Development" "WebBrowser" ];
             }}/share/applications/* $out/share/applications/
+
+            # Copy an icon if available (you can replace this with the actual path to an icon file)
+            cp ${pkgs.fetchurl {
+              url = "https://raw.githubusercontent.com/responsively-org/responsively-app/master/assets/icon.png";
+              sha256 = "sha256-of-the-icon-file"; # Replace with actual sha256 of the icon
+            }} $out/share/icons/hicolor/scalable/apps/responsively.png
+          '';
+
+          # Update desktop database during installation
+          postInstall = ''
+            if command -v update-desktop-database > /dev/null; then
+              update-desktop-database $out/share/applications
+            fi
           '';
         };
 
