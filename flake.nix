@@ -13,7 +13,7 @@
       in
       {
         packages.responsively = pkgs.appimageTools.wrapType2 {
-          name = "ResponsivelyApp";
+          name = "Responsively";
           version = "1.15.0";
 
           src = pkgs.fetchurl {
@@ -31,7 +31,7 @@
               name = "responsively";
               desktopName = "Responsively";
               comment = "Responsive Web Design Testing Tool";
-              exec = "$out/bin/ResponsivelyApp";
+              exec = "$out/bin/responsively";
               icon = "responsively";
               categories = [ "Development" "WebBrowser" ];
             }}/share/applications/* $out/share/applications/
