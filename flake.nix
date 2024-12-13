@@ -13,7 +13,7 @@
       in
       {
         packages.responsively = pkgs.appimageTools.wrapType2 {
-          name = "Responsively";
+          pname = "Responsively";
           version = "1.15.0";
 
           src = pkgs.fetchurl {
