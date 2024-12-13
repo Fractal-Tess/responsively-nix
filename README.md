@@ -16,33 +16,8 @@ This repository contains a Nix flake for installing and running [Responsively Ap
 
 ## Installation
 
-To install Responsively App using this flake, run:
+There are two ways to install Responsively App using this flake:
 
-```bash
-nix profile install github:YOUR_USERNAME/responsively-nix
-```
+### 1. Using NixOS Configuration
 
-Or, you can try it without installing:
-
-```bash
-nix run github:YOUR_USERNAME/responsively-nix
-```
-
-## Usage
-
-After installation, you can:
-1. Launch from your desktop environment's application menu
-2. Run `responsively` from the command line
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This flake configuration is provided under the MIT License. Responsively App itself has its own license terms.
-
-## Acknowledgments
-
-- [Responsively App](https://responsively.app/) - The original application
-- [Nix](https://nixos.org/) - The package manager that makes this possible
+Add to your `flake.nix` inputs:
